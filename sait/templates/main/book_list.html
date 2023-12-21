@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}books{% endblock %}
+
+{% block content %}
+
+<style>
+.book-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book {
+  padding: 50px;
+}
+</style>
+
+<form action="{% url 'search_books' %}" method="GET">
+  <input type="text" name="query" value="{{ query }}" placeholder="Search books">
+  <button type="submit">Search</button>
+</form>
+
+
+<a href="create/">Добавить книгу</a>
+
+<div class="book-container">
+  {% for book in books %}
+    <div class="book">
+      <a href="{{ book.id }}/">
+        <h6>{{ book.title }}</h6>
+        <img src="{{ book.image.url }}" height="250" width="200">
+        <p>{{ book.author }}</p>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
