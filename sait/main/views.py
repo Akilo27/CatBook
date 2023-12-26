@@ -18,14 +18,15 @@ def search_books(request):
 
 def create_book(request):
     if request.method == 'POST':
-        form = BookForm(request.POST)
+        form = BookForm(request.POST, request.FILES)
         if form.is_valid():
-
             book = form.save(commit=False)
             book.save()
             return redirect('/')
-    form = BookForm()
+    else:
+        form = BookForm()
     return render(request, 'main/create_book.html', {'form': form})
+
 
 
 def book_detail(request, id):

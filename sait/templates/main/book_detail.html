@@ -4,10 +4,11 @@
   {% block title %}book{% endblock %}
 
   {% block content %}
- <div class="col-sm-6 col-md-4 col-lg-3 col-xl-10">
-          <h6>{{ book.title }}</h6>
+ <div class="text-center">
+          <h6>Название книги - {{ book.title }}</h6>
           <img src="{{ book.image.url }}" height="500" width="400">
-          <p>{{ book.author }}</p>
+          <p>Если вы хотите купить живую книгу - {{ book.price }} руб.</p>
+          <p>Автор - {{ book.author }}</p>
 
           <a href="{{ book.book.url }}" download>Скачать - "{{ book.title }}"</a>
 </div>
